@@ -14,6 +14,7 @@
             --light: #ecf0f1;
             --dark: #1a252f;
             --gray: #7f8c8d;
+            --success: #2ecc71;
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --border-radius: 10px;
@@ -351,8 +352,8 @@
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
@@ -361,6 +362,8 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -369,23 +372,76 @@
         }
 
         .project-img {
-            height: 200px;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            background-color: var(--secondary);
             color: white;
-            font-size: 3rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .project-link:hover {
+            background-color: var(--accent);
+            transform: scale(1.1);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-content h3 {
             color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
         }
 
         .project-date {
@@ -393,18 +449,20 @@
             font-weight: 500;
             margin-bottom: 1rem;
             display: block;
+            font-size: 0.9rem;
         }
 
         .project-content p {
             color: var(--gray);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .tech-tag {
@@ -412,7 +470,47 @@
             color: var(--secondary);
             padding: 0.3rem 0.8rem;
             border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
             font-size: 0.9rem;
+        }
+
+        .btn-live {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-live:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .btn-code {
+            background-color: var(--light);
+            color: var(--primary);
+            border: 1px solid #ddd;
+        }
+
+        .btn-code:hover {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
         }
 
         /* Skills Section */
@@ -575,7 +673,7 @@
 
         /* Contact Section */
         .contact-section {
-            background-color: #b8bbc0;
+            background-color: #f8f9fa;
         }
 
         .contact-container {
@@ -585,7 +683,7 @@
         }
 
         .contact-info-box {
-            background-color: rgb(244, 241, 241);
+            background-color: white;
             border-radius: var(--border-radius);
             padding: 2rem;
             box-shadow: var(--shadow);
@@ -595,7 +693,7 @@
             color: var(--primary);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(55, 6, 214, 0.2);
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
         }
 
         .contact-details {
@@ -627,7 +725,7 @@
         }
 
         .contact-form {
-            background-color: rgb(250, 248, 248);
+            background-color: white;
             border-radius: var(--border-radius);
             padding: 2rem;
             box-shadow: var(--shadow);
@@ -648,7 +746,7 @@
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid #6d5353;
+            border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Roboto', sans-serif;
             font-size: 1rem;
@@ -659,8 +757,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--secondary);
-            box-shadow: 0 0 0 2px rgba(7, 224, 90, 0.2);
-            background-color: #e325100f;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
         .form-group textarea {
@@ -670,7 +767,7 @@
 
         .form-btn {
             background-color: var(--secondary);
-            color: rgb(244, 241, 241);
+            color: white;
             border: none;
             padding: 0.8rem 2rem;
             border-radius: 5px;
@@ -711,8 +808,8 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: rgb(29, 25, 25);
+            background-color:rgb(131, 131, 250);
+            color: white;
             border-radius: 50%;
             font-size: 1.2rem;
             transition: var(--transition);
@@ -818,6 +915,10 @@
             section {
                 padding: 3rem 0;
             }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -838,6 +939,10 @@
                 width: 180px;
                 height: 180px;
             }
+            
+            .project-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -847,7 +952,6 @@
         <div class="container">
             <nav>
                 <a href="parmanand.jpeg" class="logo">
-                    <!-- Replace with your actual photo URL or path -->
                     <img src="parmanand.jpeg" alt="Parmanand Yadav" class="logo-img">
                     Parmanand<span>Yadav</span>
                 </a>
@@ -899,7 +1003,6 @@
                 </div>
                 
                 <div class="hero-image">
-                    <!-- Replace with your actual photo URL or path -->
                     <img src="parmanand.jpeg" alt="Parmanand Yadav" class="profile-img">
                 </div>
             </div>
@@ -934,30 +1037,60 @@
         <div class="container">
             <div class="section-title">
                 <h2>Projects</h2>
-                <p>My web development projects and portfolio work</p>
+                <p>My web development projects with live demos</p>
             </div>
             
             <div class="projects-grid">
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-laptop-code"></i>
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80 https://parmanandy12.github.io/MY-PORTFOLIO/" alt="Portfolio Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://parmanandy12.github.io/MY-PORTFOLIO/" class="project-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/parmanandy12/MY-PORTFOLIO" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>Personal Portfolio Website</h3>
                         <span class="project-date">08/2025 - Biratnagar, Nepal</span>
-                        <p>A project to create a personal online branding space that showcases skills and previous works. Designed and developed a responsive personal portfolio using HTML, CSS, and JavaScript.</p>
+                        <p>A modern, responsive portfolio website showcasing my skills, projects, and experience. Features include dark/light mode, smooth animations, and contact form.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Responsive Design</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://parmanandy12.github.io/MY-PORTFOLIO/" class="project-btn btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/parmanandy12/MY-PORTFOLIO" class="project-btn btn-code" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-utensils"></i>
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Restaurant Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>Restaurant Website</h3>
@@ -969,31 +1102,31 @@
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Bootstrap</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Video Editing </h3>
-                        <span class="project-date">07/2025 - Biratnagar, Nepal</span>
-                        <p>A showcase website for video editing projects with embedded video player, project galleries, and client testimonials. Includes before/after comparisons and service pricing.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Video Editing</span>
-                            <span class="tech-tag">Adobe Premiere</span>
-                            <span class="tech-tag">After Effects</span>
-                            <span class="tech-tag">Web Integration</span>
+                        <div class="project-actions">
+                            <a href="#" class="project-btn btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-btn btn-code" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
                         </div>
                     </div>
                 </div>
-                
-                
-                
+               
+                <!-- Project 5 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-chart-line"></i>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="SEO Optimized Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>SEO Optimized Website</h3>
@@ -1005,12 +1138,31 @@
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">Performance</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-btn btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-btn btn-code" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Project 6 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-code"></i>
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Web Development Projects">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>Web Development Projects</h3>
@@ -1021,6 +1173,14 @@
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Frontend</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/parmanandy12" class="project-btn btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> View GitHub
+                            </a>
+                            <a href="https://github.com/parmanandy12" class="project-btn btn-code" target="_blank">
+                                <i class="fab fa-github"></i> All Projects
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1327,19 +1487,8 @@
             this.reset();
         });
         
-        // Email click functionality
-        document.querySelectorAll('a[href^="mailto:"]').forEach(emailLink => {
-            emailLink.addEventListener('click', function(e) {
-                // Optionally add tracking or analytics here
-                console.log('Email link clicked:', this.href);
-            });
-        });
-        
-        // Add animation to project cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Project card animations
+        const projectCards = document.querySelectorAll('.project-card');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1348,14 +1497,26 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
         
-        // Observe project cards
-        document.querySelectorAll('.project-card').forEach(card => {
+        projectCards.forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
+        });
+        
+        // Live demo button functionality
+        document.querySelectorAll('.btn-live').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(this.href === '#' || this.href === window.location.href + '#') {
+                    e.preventDefault();
+                    alert('This project demo is not yet available. Check back soon!');
+                }
+            });
         });
     </script>
 </body>
