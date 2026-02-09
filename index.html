@@ -7,37 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Default = mobile styles (small screens first) */
-body {
-    font-size: 1.1rem;
-    padding: 1rem;
-}
-
-.container {
-    width: 100%;
-    padding: 0 1rem;
-}
-
-/* Tablet and up */
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-}
-
-/* Laptop / desktop */
-@media (min-width: 1024px) {
-    .container {
-        max-width: 960px;
-    }
-    
-    /* bigger fonts, side-by-side layout, etc. */
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
@@ -975,14 +944,9 @@ body {
                 flex-direction: column;
             }
         }
-        img, video, iframe {
-    max-width: 100%;
-    height: auto;
-}
     </style>
 </head>
 <body>
-    <img src="photo.jpg" style="max-width: 100%; height: auto; display: block;">
     <!-- Header & Navigation -->
     <header>
         <div class="container">
